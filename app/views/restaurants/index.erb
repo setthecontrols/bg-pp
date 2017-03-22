@@ -1,0 +1,15 @@
+<center>
+<h2>Here are a bunch of restaurants</h2>
+
+<ul>
+<%@restaurants.each do |restaurant|%>
+   <a href=<%="/restaurants/#{restaurant.id}"%>><%=restaurant.name%></a><br>
+<%end%>
+</ul>
+
+<% if current_user %>
+  <h3><a class='button' href="/restaurants/new">Add a restaurant</a></h3>
+<% else %>
+    <h4>Please log in to add a restaurant!</h4>
+<% end %>
+</center>

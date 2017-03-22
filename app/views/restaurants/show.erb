@@ -1,0 +1,19 @@
+<center>
+<h2> <%=@restaurant.name%>  </h2>
+
+<ul>
+
+   Restaurant Name: <%=@restaurant.address%><br>
+   Cuisin: <%=@restaurant.cuisine%><br>
+   Added by: <%=@user.user_name %>
+
+
+</ul>
+
+<% if @user.id == @restaurant.user_id %>
+  <h4><a class='button' href="/restaurants/<%=@restaurant.id%>/edit">You made it.  Go ahead and edit it.  C,mon.</a></h4>
+  <form id="delete" method="post" action="/restaurants/<%=@restaurant.id%>">
+  <input type="hidden" name="_method" value="delete">
+  <h4><input class="button" type="submit" value="Delete" class="button"></h4>
+<% end %>
+</center>

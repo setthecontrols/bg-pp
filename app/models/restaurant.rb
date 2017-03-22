@@ -1,5 +1,4 @@
-class Restaurants < ActiveRecord::Base
-  has_many :users
+class Restaurant < ActiveRecord::Base
   has_many :reviews
   has_many :reviewers, through: :reviews
 end

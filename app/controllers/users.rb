@@ -9,10 +9,10 @@ get '/users/new' do
 end
 
 post '/users' do
-	if params[:user] == ""
-		@errors = ["Please use valid email/username/password"]
-		erb :'/users/new'
-	end
+	# if params[:user] == ""
+	# 	@errors = ["Please use valid email/username/password"]
+	# 	erb :'/users/new'
+	# end
 
 	@user = User.new(params[:user])
 	if @user.save
