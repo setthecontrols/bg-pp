@@ -25,10 +25,13 @@ end
 get '/restaurants/:id' do
   @restaurant = Restaurant.find(params[:id]) #define instance variable for view
   @user = User.find_by(id: @restaurant.user_id)
-  "*"*50
+  @reviews = Review.all
+  
+  p "*" * 50
   p @restaurant
-  p @user
-  "*"*50
+  p "printing reviews!!!"
+  p @reviews
+  p "*" * 50
   erb :'restaurants/show' #show single restaurant view
 end
 
@@ -46,17 +49,13 @@ end
 
 
 put '/restaurants/:id' do
-
-  #get params from url
-  @restaurant = Restaurant.find(params[:id]) #define variable to edit
-
-  @restaurant.assign_attributes(params[:restaurant]) #assign new attributes
-
-  if @restaurant.save #saves new restaurant or returns false if unsuccessful
-    redirect '/restaurants' #redirect back to restaurants index page
+  @restaurant = Restaurant.find(params[:id])
+  @restaurant.assign_attributes(params[:restaurant])
+  if @restaurant.save
+    redirect '/restaurants'
   else
     @errors = @restaurant.errors.full_messages
-    erb :'restaurants/edit' #show edit restaurant view again(potentially displaying errors)
+    erb :'restaurants/edit'
   end
 end
 

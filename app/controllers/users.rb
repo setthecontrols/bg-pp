@@ -17,7 +17,7 @@ post '/users' do
 	@user = User.new(params[:user])
 	if @user.save
 		login
-		redirect "/users/#{@user.id}"
+		redirect "/"
 	else
 
 		@errors = @user.errors.full_messages

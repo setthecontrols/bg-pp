@@ -1,10 +1,10 @@
-User.destroy_allsers
+User.destroy_all
 Restaurant.destroy_all
 Review.destroy_all
 
 
 users = []
-10.times do
+20.times do
   users << User.create(user_name: Faker::Internet.user_name, email: Faker::Internet.email, password: "password")
 end
 
@@ -17,5 +17,5 @@ end
 
 
 15.times do
-  Review.create(restaurant_id: rand(1..restaurants.count), reviewer_id: rand(1..users.count))
+  Review.create(review_text: "this is totally a restaurant.  they have food. ", restaurant_id: rand(1..restaurants.count), reviewer_id: rand(1..users.count))
 end
