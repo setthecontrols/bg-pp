@@ -1,4 +1,4 @@
 get '/' do
-  # Look in app/views/index.erb
-  erb :index
+  @restaurants = Restaurant.all
+  erb :'restaurants/index'
 end
