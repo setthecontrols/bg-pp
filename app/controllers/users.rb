@@ -9,15 +9,10 @@ get '/users/new' do
 end
 
 post '/users' do
-	# if params[:user] == ""
-	# 	@errors = ["Please use valid email/username/password"]
-	# 	erb :'/users/new'
-	# end
-
 	@user = User.new(params[:user])
 	if @user.save
 		login
-		redirect "/"
+		redirect "/users/#{@user.id}"
 	else
 		erb :'/users/new'
 	end
