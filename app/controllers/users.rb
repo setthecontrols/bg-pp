@@ -19,9 +19,6 @@ post '/users' do
 		login
 		redirect "/"
 	else
-
-		@errors = @user.errors.full_messages
-		p @errors
 		erb :'/users/new'
 	end
 end
